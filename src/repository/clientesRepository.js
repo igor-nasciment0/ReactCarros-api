@@ -49,8 +49,6 @@ export async function alterarCliente(id, newCliente) {
     `
 
     let [resposta] = await conexao.query(sql, [newCliente.nome, newCliente.email, newCliente.telefone, newCliente.cpf, newCliente.cnh, id]);
-    
-    console.log(resposta);
 
     return resposta.affectedRows;
 }
