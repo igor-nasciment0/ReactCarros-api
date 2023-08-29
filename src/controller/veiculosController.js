@@ -8,7 +8,7 @@ endpoints.get('/veiculo', async (req, resp) =>{
         let descricao = req.query.descricao;
 
         if(!descricao)
-            descricao = "";
+            descricao = '';
 
         let veiculos = await listarVeiculos(descricao);
 

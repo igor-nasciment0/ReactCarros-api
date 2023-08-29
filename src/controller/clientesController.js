@@ -7,6 +7,9 @@ endpoints.get('/cliente', async (req, resp) =>{
     try {
         let nome = req.query.nome;
 
+        if(!nome)
+            nome = '';
+
         let clientes = await listarClientes(nome);
 
         resp.send(clientes);
