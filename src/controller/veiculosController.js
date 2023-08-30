@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { listarVeiculos, inserirVeiculo, listarTipos, alterarVeiculo, deletarVeiculo } from "../repository/veiculosRepository.js";
+import { listarVeiculos, inserirVeiculo, alterarVeiculo, deletarVeiculo } from "../repository/veiculosRepository.js";
 
 let endpoints = Router();
 
@@ -19,17 +19,6 @@ endpoints.get('/veiculo', async (req, resp) =>{
     }    
 })
 
-endpoints.get('/veiculo/tipo', async (req, resp) => {
-    try {
-        let tipos = await listarTipos();
-
-        resp.send(tipos);
-
-    } catch (err) {
-        resp.status(500).send(err.message)
-    }    
-})
-
 endpoints.post('/veiculo', async (req, resp) => {
     try {
         let newVeiculo = req.body;
@@ -39,6 +28,7 @@ endpoints.post('/veiculo', async (req, resp) => {
         resp.send(dados);  
 
     } catch (err) {
+        console.log(err);
         resp.status(500).send(err.message)
     }
 })

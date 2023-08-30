@@ -10,7 +10,7 @@ export async function listarVeiculos(descricao) {
     let sql = 
     `
       select id_veiculo			id,
-			 ds_tipo			tipo,
+			 ds_tipo_veiculo    tipo,
 			 ds_modelo			modelo,
 			 ds_marca			marca,
 			 ds_ano				ano,
@@ -18,7 +18,7 @@ export async function listarVeiculos(descricao) {
 		from tb_veiculos
 
   inner join tb_tipos_veiculo
-		  on tb_veiculos.id_tipo = tb_tipos_veiculo.id_tipo	
+		  on tb_veiculos.id_tipo = tb_tipos_veiculo.id_tipo_veiculo
 
 	   where ds_modelo			like ?
 		   or ds_marca			like ?
@@ -29,19 +29,6 @@ export async function listarVeiculos(descricao) {
 
     return veiculos;
 }
-
-export async function listarTipos() {
-    let sql =
-    `
-        select id_tipo      idTipo,
-               ds_tipo      descricao
-          from tb_tipos_veiculo
-    `
-
-    let [tipos] = await conexao.query(sql);
-
-    return tipos;
-} 
 
 export async function inserirVeiculo(veiculo) {
     let sql = 

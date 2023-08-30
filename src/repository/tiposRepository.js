@@ -1,4 +1,4 @@
-import conexao from "./conexao"
+import conexao from "./conexao.js"
 
 export async function listarTiposVeiculo() {
     let sql = 
@@ -7,7 +7,7 @@ export async function listarTiposVeiculo() {
        from tb_tipos_veiculo
     `
 
-    let [dados] = conexao.query(sql);
+    let [dados] = await conexao.query(sql);
 
     return dados;
 }

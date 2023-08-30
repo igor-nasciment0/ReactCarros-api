@@ -1,9 +1,9 @@
 import Router from 'express';
-import { listarTiposVeiculo } from '../repository/tiposRepository';
+import { listarTiposVeiculo } from '../repository/tiposRepository.js';
 
 let endpoints = Router();
 
-endpoints.get('/tipos-veiculo', async (req, resp) => {
+endpoints.get('/veiculo/tipo', async (req, resp) => {
     try {
         let resposta = await listarTiposVeiculo();
         resp.send(resposta);
